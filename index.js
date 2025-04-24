@@ -14,48 +14,6 @@ const SHOPIFY_APP_URL= process.env.SHOPIFY_APP_URL;
 const SHOPIFY_API_ACCESS_TOKEN= process.env.SHOPIFY_API_ACCESS_TOKEN;
 const SHOPIFY_API_KEY= process.env.SHOPIFY_API_KEY;
 
-// app.use(cookieParser());
-// app.use(session({ secret: 'shhh', resave: false, saveUninitialized: false }));
-// app.use(express.urlencoded({ extended: true }));
-// app.set('view engine', 'ejs');
-
-// Helper for HMAC validation
-// function verifyHmac(query, secret) {
-//   const { hmac, ...rest } = query;
-//   const sortedParams = Object.keys(rest).sort().map(key => `${key}=${rest[key]}`).join('&');
-//   const generatedHmac = crypto.createHmac('sha256', secret).update(sortedParams).digest('hex');
-//   return generatedHmac === hmac;
-// }
-
-// OAuth Step 1: Redirect to Shopify
-// app.get('/install', (req, res) => {
-//   const shop = req.query.shop;
-//   if (!shop) return res.send('Shop missing');
-
-//   const redirectUri = `${process.env.SHOPIFY_APP_URL}/callback`;
-//   const installUrl = `https://${shop}/admin/oauth/authorize?client_id=${process.env.SHOPIFY_API_KEY}&scope=${process.env.SCOPES}&redirect_uri=${redirectUri}`;
-
-//   res.redirect(installUrl);
-// });
-
-// OAuth Step 2: Handle callback
-// app.get('/callback', async (req, res) => {
-//   const { shop, code, hmac } = req.query;
-//   if (!verifyHmac(req.query, process.env.SHOPIFY_API_SECRET)) {
-//     return res.status(400).send('HMAC validation failed');
-//   }
-
-//   const tokenURL = `https://${shop}/admin/oauth/access_token`;
-//   const { data } = await axios.post(tokenURL, {
-//     client_id: process.env.SHOPIFY_API_KEY,
-//     client_secret: process.env.SHOPIFY_API_SECRET,
-//     code
-//   });
-
-//   req.session.shop = shop;
-//   req.session.accessToken = data.access_token;
-//   res.redirect('/orders');
-// });
 
 // Orders Page
 app.get('/orders', async (req, res) => {
